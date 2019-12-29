@@ -14,3 +14,7 @@ class Block:
                   str(self.data) + str(self.timestamp)).encode()
         digest = hashlib.sha256(header).hexdigest()
         return digest
+
+    @staticmethod
+    def createGenesisBlock():
+        return Block(0, 0, datetime.datetime.now())
