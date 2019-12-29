@@ -1,6 +1,5 @@
 import hashlib
 import datetime
-from Blockchain import blockchain
 
 
 class Block:
@@ -20,12 +19,3 @@ class Block:
     @staticmethod
     def createGenesisBlock():
         return Block(0, 0, 0, datetime.datetime.now())
-
-    def createBlock(self, blockchain):
-        currentindex = len(blockchain)
-        previoushash = blockchain[-1].hash()
-        data = input("Enter your data: ")
-        timestamp = datetime.datetime.now()
-        newblock = Block(currentindex, previoushash, data, timestamp)
-        blockchain.append(newblock)
-        return blockchain
