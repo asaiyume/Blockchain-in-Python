@@ -18,4 +18,4 @@ class Block:
 
     @staticmethod
     def createGenesisBlock():
-        return Block(0, 0, 0, datetime.datetime.now())
+        return Block(0, None, None, datetime.datetime.now())

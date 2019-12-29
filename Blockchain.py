@@ -7,7 +7,7 @@ blockchain = [Block.Block.createGenesisBlock()]
 
 def createBlock(blockchain):
     currentindex = len(blockchain)
-    previoushash = blockchain[-1].hash()
+    previoushash = blockchain[-1].hash
     data = input("Enter your data: ")
     timestamp = datetime.datetime.now()
     newblock = Block.Block(currentindex, previoushash, data, timestamp)
@@ -20,9 +20,10 @@ while True:
     if int(userinput) == 1:
         for i in blockchain:
             print("Index: {}\nHash: {}\nPrevious Hash: {}\nData: {}\nTimestamp: {}\n{}".format(
-                i.index, i.hash, i.previousBlockHash, i.data, i.timestamp, "="*20))
+                i.index, i.hash, i.previousBlockHash, i.data, i.timestamp, "="*70))
     elif int(userinput) == 2:
         block = createBlock(blockchain)
+        blockchain.append(block)
         print("A new block has been added!\nIndex: {}\nHash: {}\nPrevious Hash: {}\nData: {}\nTimestamp: {}".format(
             block.index, block.hash, block.previousBlockHash, block.data, block.timestamp))
     elif int(userinput) == 3:
