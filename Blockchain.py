@@ -28,6 +28,7 @@ def initialize():
                     blocks.previousBlockHash+','+blocks.data+','+str(blocks.timestamp)+'\n')
         print('Ledger not found, creating new ledger...')
         print('Writing new ledger completed!')
+        f.close()
         return blockchain
     else:
         blockchain = []
@@ -41,13 +42,12 @@ def initialize():
             block = Block.Block(
                 temp[blocks+1][0], temp[blocks+1][2], temp[blocks+1][3], temp[blocks+1][4])
             blockchain.append(block)
+        f.close()
         return blockchain
 
 
 def createBlock(blockchain):
     currentindex = len(blockchain)
-    print(blockchain)
-    print(currentindex)
     previoushash = blockchain[-1].hash
     data = input("Enter your data: ")
     timestamp = datetime.datetime.now()
@@ -69,6 +69,7 @@ def editledger(blockchain):
 def viewledger():
     f = open(
         'ledger.csv', 'r+')
+    viewer = []
     for lines in f.readlines():
         lines = lines.strip('\n')
         lines = lines.split(',')
